@@ -1,49 +1,88 @@
 #include<stdio.h>
-int NumeroReceber,nbi,bhexa,noct;
-int main(){
-    int saidaP=0,escolha;
-     do {
-            printf("Digite o numero:");
-            scanf("%d",&NumeroReceber);
-            printf("Escolha uma opcao:\n[1] Binario\n[2] Hexadecimal\n[3] Octal\n[4] Encerrar\n");
-            scanf("%d", &escolha);
-
-            switch(escolha) {
-                case 1:
-
-                    printf("Converter para binário\n");
-                    break;
-                case 2:
-
-                    printf("Converter para hexadecimal\n");
-                    break;
-                case 3:
-
-                    printf("Converter para octal\n");
-                    break;
-                case 4:
-                    saidaP = 1;
-                    break;
-                default:
-                    printf("Opção inválida. Tente novamente.\n");
-            }
-        } while(saidaP == 0);
-}
-void Cb(){
-    int binario[100000];
-    if(NumeroReceber==0){
-
+#include <stdlib.h>
+int nbi,bhexa,noct;
+void Cb(int Numero){
+    printf("\nNumero digitado:%d",Numero);
+    int binario[1000];
+    if(Numero==0){
     printf("\nO resultado e:0");}
     else{
         int n =0;
-        while(NumeroReceber>0){
-        binario[n] = NumeroReceber % 2;
-        NumeroReceber = NumeroReceber / 2;
+        while(Numero>0){
+        binario[n] = Numero % 2;
+        Numero = Numero / 2;
         n++;
     }
     printf("\nBinario: ");
     for (int j = n - 1; j >= 0; j--) {
         printf("%d", binario[j]);
     }
+    printf("\n");
     }
 }
+void co(int numero) {
+    int octal[100], i = 0;
+
+    if (numero == 0) {
+        printf("\nOctal: 0\n");
+        return;
+    }
+
+    while (numero > 0) {
+        octal[i] = numero % 8;
+        numero = numero / 8;
+        i++;
+    }
+
+    printf("Octal: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", octal[j]);
+    }
+    printf("\n");
+}
+int main(){
+    int NumeroReceber,saidaP=0,escolha,fuc;
+     do {
+            system("cls");
+            printf("\nDigite o numero:");
+            scanf("%d",&NumeroReceber);
+            printf("\nEscolha uma opcao:\n[1] Binario\n[2] Hexadecimal\n[3] Octal\n[4] Todos\n[5] Encerrar\n");
+            scanf("%d", &escolha);
+            switch(escolha) {
+                case 1:
+                   system("cls");
+                    printf("Converter para binario\n");
+                    Cb(NumeroReceber);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 2:
+                    system("cls");
+                    printf("Converter para hexadecimal\n");
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 3:
+                    system("cls");
+                    printf("\nNumero digitado:%d",NumeroReceber);
+                    printf("Converter para octal\n");
+                    co(NumeroReceber);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 4:
+                    system("cls");
+                    Cb(NumeroReceber);
+                    co(NumeroReceber);
+                    printf("\n");
+                    system("pause");
+                    break;
+                    case 5:
+                    saidaP = 1;
+                    break;
+                default:
+            }
+        } while(saidaP == 0);
+        return 0;
+}
+
