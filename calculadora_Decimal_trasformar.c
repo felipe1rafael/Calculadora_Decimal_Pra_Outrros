@@ -8,7 +8,6 @@ void ch(int numero) {
         printf("Hexadecimal: 0\n");
         return;
     }
-
     while (numero > 0) {
         int resto = numero % 16;
 
