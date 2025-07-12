@@ -1,6 +1,33 @@
 #include<stdio.h>
 #include <stdlib.h>
 int nbi,bhexa,noct;
+void ch(int numero) {
+    char hexa[32];
+    int i = 0;
+
+    if (numero == 0) {
+        printf("Hexadecimal: 0\n");
+        return;
+    }
+
+    while (numero > 0) {
+        int resto = numero % 16;
+
+        if (resto < 10)
+            hexa[i] = resto + '0';
+        else
+            hexa[i] = resto - 10 + 'A';
+
+        numero = numero / 16;
+        i++;
+    }
+
+    printf("Hexadecimal: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%c", hexa[j]);
+    }
+    printf("\n");
+}
 void Cb(int Numero){
     printf("\nNumero digitado:%d",Numero);
     int binario[1000];
@@ -58,7 +85,9 @@ int main(){
                     break;
                 case 2:
                     system("cls");
+                    printf("\nNumero digitado:%d\n",NumeroReceber);
                     printf("Converter para hexadecimal\n");
+                    ch(NumeroReceber);
                     printf("\n");
                     system("pause");
                     break;
@@ -74,6 +103,7 @@ int main(){
                     system("cls");
                     Cb(NumeroReceber);
                     co(NumeroReceber);
+                    ch(NumeroReceber);
                     printf("\n");
                     system("pause");
                     break;
