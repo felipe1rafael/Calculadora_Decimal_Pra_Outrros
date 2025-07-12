@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include <stdlib.h>
-int nbi,bhexa,noct;
 void ch(int numero) {
     char hexa[32];
     int i = 0;
